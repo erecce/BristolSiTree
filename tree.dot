@@ -1,0 +1,182 @@
+# ---------------------------
+# Title: INMOS family tree
+# Usage: m4 tree.dot.m4 | dot -Tpdf -o tree.pdf
+# Description: 
+#   A dot/graphviz representation of the relationship of the Bristol Silicon Cluster.
+#   It has m4 macros so should be run through the M4 pre-processor prior to dot
+#
+#   [nodes] Companies are classed as a full 'entity' or a 'branch' of a larger company
+#   [edges] Links between companies are classed as 'startup' formed, 'acquired' or
+#           people transferred
+#
+#   To add more information add in the NODES and EDGES sections below
+#
+#   To give a timeline some companies are placed in RANKs in the timeline section.
+#
+# Author: Will Robbins
+# Date: 12th December 2018
+# #---------------------------
+
+digraph g { 
+
+   # Set A4 size output and fill it
+   ratio="fill";
+   size="8.3,11.7!";
+
+   # Company Type
+   
+   
+   #define(`branch',`shape=box, style=filled, fillcolor = "green"')
+
+   # Transition Type
+   
+   
+    #constraint=false
+
+   node [fontname = "helvetica", shape=box, penwidth = 3];
+   edge [fontname = "helvetica"];
+
+   #==================
+   # Legend
+   #==================
+   "Legend0" [label="Company Branch", color="red" ];
+   "Legend1" [label="Company Entity", color="blue" ];
+   "Legend0" -> "Legend1" [label="Startup", style=dashed, penwidth=2, color="blue"]
+   "Legend0" -> "Legend1" [label="Acquired", style=solid, penwidth=3, color="blue"]
+   "Legend0" -> "Legend1" [label="People", style=dotted,  penwidth=1, color="blue"]
+
+   #==================
+   # Companies (NODES)
+   #==================
+
+   "INMOS" [label="INMOS\n1978-1989", color="blue" ];
+   "STMicroelectronics" [label="STMicroelectronics\n1989-2015", color="red" ]
+   "Bristol Uni" [label="Bristol Uni\n1595-", color="blue" ]
+   "Motion Media" [label="Motion Media\nVideo Compression\n1993-2003", color="blue" ];
+   "Brooktree" [label="Brooktree\nDSP,Video\n1989-1992", color="red" ];
+   "Pioneer" [label="Pioneer\nDSP,Video\n1992-1998", color="red" ];
+   "Odeum" [label="Odeum\n1996-1998", color="red" ];
+   "Oak Technology" [label="Oak Technology\nDSP,Video\n1998-2000", color="red" ];
+   "Conexant" [label="Conexant\nDSP,Video\n1996-2000", color="red" ];
+   "PicoChip" [label="PicoChip\nMobile Comms\n2001-2012", color="blue" ];
+   "Mindspeed" [label="Mindspeed\nMobile Comms\n2012-2016", color="red" ];
+   "Intel" [label="Intel\nMobile Comms\n2016-2017", color="red" ];
+   "Meiko"  [label="Meiko\nSupercomputer\n1985-1996", color="blue" ];
+   "Division" [label="Division\nVR\n1989-1996\n", color="blue" ];
+   "PixelFusion" [label="PixelFusion\nGraphics\n1997-2001\n",color="blue" ];
+   "ClearSpeed" [label="ClearSpeed\nMaths Processor\n2001-2009\n", color="blue" ];
+   "BluWireless" [label="BluWireless\nWireless Comms\n2009-\n",color="blue" ];
+   "Quadrics" [label="Quadrics\n1996-2009", color="blue" ];
+   "Gnodal" [label="Gnodal\nNetworking\n2007-2013", color="blue" ];
+   "Cray"  [label="Cray\nNetworking\n2013-"color="red" ];
+   "XMOS" [label="XMOS\n2005-", color="blue" ];
+   "Graphcore" [label="Graphcore\nMachine Learning\n2016-", color="blue" ];
+   "Element14" [label="Element14\nFixed line Comms\n1999-2000"color="blue" ];
+   "Broadcom"  [label="Broadcom\nFixed line Comms\n2000-", color="red" ];
+   "Icera" [label="Icera\nMobile Comms\n2002-11", color="blue" ];
+   "NVidia"  [label="NVidia\nMobile Comms\n2011-15", color="red" ];
+   "Jump Trading"  [label="Jump Trading\nFinTech\n2015-", color="red" ];
+   "Ultrahaptics"  [label="Ultrahaptics\n2015-", color="blue" ];
+   "5AI" [label="5AI\nAutonomous Driving\n2015-", color="blue" ];
+   "HP" [color="red" ];
+   "Elixent" [label="Elixent\nFPGA Fabric\n2000-2006", color="blue" ];
+   "Panasonic" [label="Panasonic\n2006-2011", color="red" ]
+   "Blackmagic Design" [label="Blackmagic Design\nBroadcast Video\n2012-", color="red" ]
+   "UltraSoc" [label="UltraSoc\nSoC Analysis\n2016-", color="blue" ]
+   "Imagination Technology" [label="Imagination Technology\n20??-", color="red" ]
+   "AfterThought" [label="AfterThought\nSoftware services\n2012-", color="blue" ]
+   "Audium" [label="Audium\nMixed Signal ICs\n2006-2010", color="blue" ]
+   "Siroyan" [label="Siroyan\nDSP IP\n1999-2003", color="blue" ]
+
+   #==================
+   # Startups (EDGES)
+   #==================
+   "INMOS" -> "Meiko" [label="1985", style=dashed, penwidth=2, color="blue"]
+   "INMOS" -> "Division" [label="1989", style=dashed, penwidth=2, color="blue"];
+   "Division" -> "PixelFusion" [label="1996", style=dashed, penwidth=2, color="blue"];
+   "INMOS" -> "Brooktree" [label="1989", style=dashed, penwidth=2, color="blue"];
+   "STMicroelectronics" -> "Motion Media" [label="1993", style=dashed, penwidth=2, color="blue"];
+
+   "PixelFusion" -> "ClearSpeed" [label="2001", style=dashed, penwidth=2, color="blue"];
+   "ClearSpeed" -> "BluWireless" [label="2009", style=dashed, penwidth=2, color="blue"];
+
+   "Pioneer" -> "Oak Technology" [label="1992", style=dashed, penwidth=2, color="blue"];
+   "Conexant" -> "PicoChip" [label="2001", style=dashed, penwidth=2, color="blue"];
+
+   "Bristol Uni" -> "XMOS" [label="2005", style=dashed, penwidth=2, color="blue"];
+   "XMOS" -> "Graphcore" [label="2016", style=solid, penwidth=3, color="blue"]; # 'Acquired' is cleanest description
+   "XMOS" -> "Jump Trading" [label="2015", style=dashed, penwidth=2, color="blue"];
+
+   "STMicroelectronics" -> "Element14" [label="1999", style=dashed, penwidth=2, color="blue"];
+   "Broadcom" -> "Icera" [label="2002", style=dashed, penwidth=2, color="blue"];
+
+   "Quadrics" -> "Gnodal" [label="2007", style=dashed, penwidth=2, color="blue"];
+
+   "NVidia" -> "5AI"  [label="2015", style=dashed, penwidth=2, color="blue"];
+
+   "HP" -> "Elixent" [label="2000", style=dashed, penwidth=2, color="blue"];
+
+   "Panasonic" -> "Blackmagic Design" [label="2012", style=dashed, penwidth=2, color="blue"];
+
+   "Mindspeed" -> "UltraSoc" [label="2016", style=dashed, penwidth=2, color="blue"];
+   "NVidia" -> "UltraSoc" [label="2016", style=dashed, penwidth=2, color="blue"];
+
+   "Conexant" -> "Audium" [label="2006", style=dashed, penwidth=2, color="blue"];
+   "PicoChip" -> "Audium" [label="2006", style=dashed, penwidth=2, color="blue"];
+
+   "PicoChip" -> "AfterThought" [label="2012", style=dashed, penwidth=2, color="blue"];
+
+   "Pioneer" -> "Siroyan" [label="1999", style=dashed, penwidth=2, color="blue"];
+
+   #==================
+   # Acquisitions (EDGES)
+   #==================
+   "INMOS" -> "STMicroelectronics" [label="1992", style=solid, penwidth=3, color="blue"];
+   "Brooktree" -> "Pioneer" [label="1992", style=solid, penwidth=3, color="blue"];
+   "Odeum" -> "Oak Technology" [label="1998", style=solid, penwidth=3, color="blue"];
+   "Oak Technology" -> "Conexant" [label="1992", style=solid, penwidth=3, color="blue"];
+   "PicoChip" -> "Mindspeed" [label="2012", style=solid, penwidth=3, color="blue"];
+   "Mindspeed" -> "Intel" [label="2016", style=solid, penwidth=3, color="blue"];
+   "Element14" -> "Broadcom" [label="2000", style=solid, penwidth=3, color="blue"];
+   "Icera" -> "NVidia" [label="2011", style=solid, penwidth=3, color="blue"];
+   "Meiko" -> "Quadrics"  [label="1996", style=solid, penwidth=3, color="blue"]
+   "Gnodal" -> "Cray"  [label="2013", style=solid, penwidth=3, color="blue"];
+   "Elixent" -> "Panasonic" [label="2006", style=solid, penwidth=3, color="blue"];
+
+   #==================
+   # People transferring (EDGES)
+   #==================
+   "INMOS" -> "Bristol Uni" [style=dotted,  penwidth=1, color="blue"];
+   "Bristol Uni" -> "Ultrahaptics" [style=dotted,  penwidth=1, color="blue"];
+   "ClearSpeed" -> "Bristol Uni" [style=dotted,  penwidth=1, color="blue"];
+   "PicoChip" -> "NVidia" [style=dotted,  penwidth=1, color="blue"];
+   "Mindspeed" -> "NVidia" [style=dotted,  penwidth=1, color="blue"];
+   "NVidia" -> "Graphcore" [style=dotted,  penwidth=1, color="blue"];
+   "NVidia" -> "Jump Trading" [style=dotted,  penwidth=1, color="blue"];
+   "Conexant" -> "Elixent" [style=dotted,  penwidth=1, color="blue"];
+   "STMicroelectronics" -> "Imagination Technology" [style=dotted,  penwidth=1, color="blue"];
+   "Siroyan" -> "Icera" [style=dotted,  penwidth=1, color="blue"];
+   "Siroyan" -> "PicoChip" [style=dotted,  penwidth=1, color="blue"];
+   "Broadcom" -> "XMOS" [style=dotted,  penwidth=1, color="blue"];
+
+   #==================
+   # Timeline (RANK)
+   #==================
+   rankdir=TB;
+   node [fontsize=25; fontcolor=white; fillcolor=dimgrey; style=filled];
+   edge [style=invis];
+
+   Past -> 1980 -> 1985 -> 1990 -> 1995 -> 2000 -> 2005 -> 2010 -> 2015 -> 2020;
+
+   { rank=same; Past, "Legend0", "Legend1" }
+   { rank=same; 1980, "INMOS"}
+   { rank=same; 1985, "Meiko", "HP" }
+   { rank=same; 1990, "Division", "Brooktree", "STMicroelectronics" }
+   { rank=same; 1995, "PixelFusion", "Motion Media", "Odeum", "Quadrics" }
+   { rank=same; 2000, "ClearSpeed", "PicoChip", "Elixent", "Element14" }
+   { rank=same; 2005, "Panasonic", "Gnodal", "XMOS", "Audium" }
+   { rank=same; 2010, "BluWireless", "NVidia", "Blackmagic Design", "Mindspeed", "AfterThought"}
+   { rank=same; 2015, "Ultrahaptics", "5AI", "Graphcore", "Jump Trading", "Cray", "Intel" }
+   { rank=same; 2020 }
+
+}
