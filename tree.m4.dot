@@ -106,10 +106,14 @@ digraph g {
    "Audium" [label="Audium\nMixed Signal ICs\n2006-2010", entity]
    "Siroyan" [label="Siroyan\nDSP IP\n1999-2003", entity]
    "Parallel Wireless" [label="Parallel Wireless\nMobile comms\n2018-", branch]
+   "Optalysys" [label="Optalysys\nFHE\n2023-", branch]
    "Vypercore" [label="Vypercore\nProcessors\n2023-", entity]
    "Picocom" [label="Picocom\nMobile Comms\n2019-", branch]
    "XTX Markets" [label="XTX Markets\nFinTech\n2023-", branch]
-   "Optalysys" [label="Optalysys\nFHE\n2023-", branch]
+   "Cerberus" [label="Cerberus\nSecurity Labs\n2016-2022", entity]
+   "ESS" [label="Embedded Security Solutions\nSecurity\n2015-2016", entity]
+   "Codasip" [label="Codasip\nProcessors\n2022-", branch]
+   "MathEmbedded" [label="MathEmbedded\nEmbedded Software\n2010-", entity]
 
    #==================
    # Startups (EDGES)
@@ -136,6 +140,8 @@ digraph g {
    "Conexant" -> "Audium" [label="2006", startup];
    "PicoChip" -> "Audium" [label="2006", startup];
    "PicoChip" -> "AfterThought" [label="2012", startup];
+   "STMicroelectronics" -> "ESS" [label="2015", startup];
+   "STMicroelectronics" -> "MathEmbedded" [label="2010", startup];
    "Pioneer" -> "Siroyan" [label="1999", startup];
    "Bristol Uni" -> "Vypercore" [label="2023", startup];
    "Bristol Uni" -> "Ultrahaptics" [label="????", startup];
@@ -160,6 +166,8 @@ digraph g {
    "UltraSoc" -> "Seimens" [label="2020", acquired];
    "BluWireless" -> "Ensilica" [label="2022", acquired];
    "Five AI" -> "Bosch" [label="2022", acquired];
+   "ESS" -> "Cerberus"[label="2016", acquired];
+   "Cerberus" -> "Codasip" [label="2022", acquired];
 
    #==================
    # People transferring (EDGES)
@@ -202,8 +210,8 @@ digraph g {
    { rank=same; 1995, "PixelFusion", "Motion Media", "Odeum", "Quadrics", "Imagination Technology" }
    { rank=same; 2000, "ClearSpeed", "PicoChip", "Elixent", "Element14" }
    { rank=same; 2005, "BluWireless", "Panasonic", "Gnodal", "XMOS", "Audium" }
-   { rank=same; 2010, "NVidia", "Blackmagic Design", "Mindspeed", "AfterThought"}
-   { rank=same; 2015, "Ultrahaptics", "Five AI", "Graphcore", "Jump Trading", "Cray", "Intel"}
+   { rank=same; 2010, "NVidia", "Blackmagic Design", "Mindspeed", "AfterThought", "MathEmbedded"}
+   { rank=same; 2015, "Ultrahaptics", "Five AI", "Graphcore", "Jump Trading", "Cray", "Intel", "ESS", "Cerberus"}
    { rank=same; 2020, "UltraLeap", "Seimens", "Ensilica", "Bosch", "Picocom"}
-   { rank=same; 2025, "Parallel Wireless", "Vypercore", "XTX Markets", "Optalysys"}
+   { rank=same; 2025, "Parallel Wireless", "Vypercore", "XTX Markets", "Optalysys", "Codasip"}
 }
